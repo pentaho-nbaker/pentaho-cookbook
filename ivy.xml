@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
+
+  <info organisation="pentaho" module="cookbook" revision="${project.revision}" />
+
+  <configurations>
+    <conf name="default"/>
+    <conf name="runtime"/>
+    <conf name="js"/>
+    <conf name="zip"/>
+  </configurations>
+
+  <publications>
+    <artifact name="${ivy.artifact.id}" m:classifier="js" type="js" ext="zip" conf="js" />
+    <artifact name="${ivy.artifact.id}" type="zip" conf="zip" />
+  </publications>
+
+  <dependencies defaultconf="default->default">
+  </dependencies>
+
+</ivy-module>

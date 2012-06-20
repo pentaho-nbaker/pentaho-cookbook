@@ -1,0 +1,74 @@
+<!--===========================================================================
+  This is the build file for Pentaho Analyzer
+
+  This build file will use the common_build.xml file as the default build
+  process and should only override the tasks that need to differ from
+  the common build file.
+
+  See common_build.xml for more details
+
+  The "all" target is the default plugin which builds the Clearview plugin from
+  scratch.  After you have successfully run this target, you can run CV unit
+  tests with "test" target.
+
+  To develop, test and debug in Eclipse, you need to run the "dev-junit" target to
+  update the test-solution artifacts when making non-Java file changes.
+
+  To test in a BIServer, run the "install" target which will push the latest plugin and
+  class file changes into the pentaho solutions folder.  You need to bounce Tomcat (or
+  other appserver) for the changes
+
+============================================================================-->
+<project name="cookbook" basedir="." default="default">
+
+  <description>
+    Pentaho Cookbook Git and RequireJS example project
+  </description>
+
+  <property name="js.build.file" value="build-res/javascript.build.js"/>
+  <property name="js.module.script.namespace" value="cookbook"/>
+  <property name="js.module.script.dir" value="resources/web/js"/>
+  <property name="purge.uncompressed.js" value="false"/>
+
+  <import file="build-res/subfloor-pkg.xml" />
+  <import file="build-res/subfloor-js.xml" />
+
+  <!-- Override to include js resolve -->
+  <target name="resolve" depends="subfloor.resolve, subfloor-js.resolve-js"/>
+
+  <!-- Override to build js and include in staging directory -->
+  <target name="assemble" depends="assemble.init,install-antcontrib,subfloor-js.build-js">
+
+    <!-- Copy the plugin.xml and any other files from the resource dir -->
+    <copy todir="${approot.stage.dir}">
+      <fileset dir="resources">
+        <include name="**/*" />
+      </fileset>
+    </copy>
+
+    <!-- Copy the compressed output of the javascript build to the staging js dir -->
+    <copy todir="${approot.stage.dir}/web/js" overwrite="true">
+      <fileset dir="${js.build.output.dir}">
+        <include name="*"/>
+      </fileset>
+    </copy>
+
+    <!-- Copy the processed (namespaced) javascript to the staging js dir -->
+    <copy todir="${approot.stage.dir}/web/js" overwrite="true">
+      <fileset dir="${js.build.output.dir}/${js.module.script.namespace}">
+        <include name="**/*" />
+      </fileset>
+    </copy>
+
+  </target>
+
+  <target name="package" depends="assemble,package-zip, subfloor-js.dist-js" description="Creates packaged distributable artifacts" />
+
+  <!-- publish javascript source -->
+  <target name="publish-nojar" depends="subfloor-js.js.publish-nojar, subfloor-pkg.publish-nojar"/>
+
+  <target name="clean-jars" depends="subfloor.clean-jars">
+    <delete dir="${js.lib.dir}" />
+  </target>
+
+</project>
