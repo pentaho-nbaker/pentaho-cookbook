@@ -1,7 +1,7 @@
 pentahoRecipeBook.recipes.push({
   author: "Benny", 
   title: "Chicken Pot Pie", 
-  description: "Impress your special someone on that special day with this romantic dinner for two!",
+  description: "Impress your special someone on that special day with this romantic dinner for two",
   ingredients: [
     {quantity: '1', name: 'Microwave'},
     {quantity: '2', name: 'Hungry Man Chicken Pot Pie'}
