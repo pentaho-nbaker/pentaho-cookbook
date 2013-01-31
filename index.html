@@ -85,7 +85,7 @@
           }
         });
 
-
+        // Bootstrap it when the document is ready
         $(document).ready(function(){
           var book = new RecipeBook(pentahoRecipeBook);
           (new RecipeBookView({model: book})).render();          
