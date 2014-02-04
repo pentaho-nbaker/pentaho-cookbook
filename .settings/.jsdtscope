@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="recipes/|bootstrap/js/" kind="src" path=""/>
+	<classpathentry kind="src" path="bootstrap/js"/>
+	<classpathentry kind="src" path="recipes"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

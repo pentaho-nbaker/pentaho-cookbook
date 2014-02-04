@@ -1,7 +1,7 @@
 pentahoRecipeBook.recipes.push({
   author: "Nick B Prime", 
   title: "Rhubarb Pie", 
-  description: "Come and git-ya-some!",
+  description: "A taste of home:)",
   ingredients: [
     {quantity: '4 cups', name: 'chopped rhubarb'},
     {quantity: '1 1/3', name: 'cups white sugar'},
