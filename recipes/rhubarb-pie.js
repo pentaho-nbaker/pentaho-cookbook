@@ -5,7 +5,7 @@ pentahoRecipeBook.recipes.push({
   ingredients: [
     {quantity: '4 cups', name: 'chopped rhubarb'},
     {quantity: '1 1/3', name: 'cups white sugar'},
-    {quantity: '6 tablespoons', name: 'all-purpose flour'},
+    {quantity: '6 tablespoons', name: 'all-purpose flowers’},
     {quantity: '1 tablespoon', name: 'butter'},
     {quantity: '4 cups', name: '1 recipe pastry for a 9 inch double crust pie'}
   ],
